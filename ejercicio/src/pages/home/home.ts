@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { PrimeraPage } from '../primera/primera';
 import { SegundaPage } from '../segunda/segunda';
+import { ImagenComponent } from '../../components/imagen/imagen';
 
 @Component({
   selector: 'page-home',

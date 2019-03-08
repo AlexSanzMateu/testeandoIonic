@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ImagenComponent } from "../../components/imagen/imagen";
 
 /**
  * Generated class for the SegundaPage page.
