@@ -12,11 +12,7 @@ import { Component } from '@angular/core';
 })
 export class ImagenComponent {
 
-  text: string;
-
   constructor() {
-    console.log('Hello ImagenComponent Component');
-    this.text = 'Hello World';
   }
 
 }

@@ -1,6 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ImagenComponent } from "../../components/imagen/imagen";
 
 /**
  * Generated class for the SegundaPage page.
@@ -15,13 +14,11 @@ import { ImagenComponent } from "../../components/imagen/imagen";
   templateUrl: 'segunda.html',
 })
 export class SegundaPage {
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad SegundaPage');
-  }
   goBack(){
     this.navCtrl.pop();
   }

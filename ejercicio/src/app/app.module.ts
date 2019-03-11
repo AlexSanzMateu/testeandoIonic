@@ -3,12 +3,15 @@ import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
+import { HttpClientModule } from '@angular/common/http';
 
 import { MyApp } from './app.component';
 import { HomePageModule } from '../pages/home/home.module';
 import { PrimeraPage } from '../pages/primera/primera';
 import { SegundaPageModule } from '../pages/segunda/segunda.module';
-
+import { TerceraPageModule } from '../pages/tercera/tercera.module';
+import { ComponentsModule } from '../components/components.module';
+import { UserServiceProvider } from '../providers/user-service/user-service';
 @NgModule({
   declarations: [
     MyApp,
@@ -18,6 +21,9 @@ import { SegundaPageModule } from '../pages/segunda/segunda.module';
     BrowserModule,
     HomePageModule,
     SegundaPageModule,
+    TerceraPageModule,
+    ComponentsModule,
+    HttpClientModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
@@ -28,7 +34,8 @@ import { SegundaPageModule } from '../pages/segunda/segunda.module';
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    UserServiceProvider
   ]
 })
 export class AppModule {}
