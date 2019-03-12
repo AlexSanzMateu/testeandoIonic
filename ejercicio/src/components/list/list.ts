@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { UserServiceProvider } from '../../providers/user-service/user-service';
-import { NavController } from 'ionic-angular';
-import { TerceraPage } from '../../pages/tercera/tercera';
+import { NavController, ModalController } from 'ionic-angular';
+import { UserDetailComponent } from '../user-detail/user-detail';
+import { UserPage } from '../../pages/user/user';
+import { useAnimation } from '@angular/core/src/animation/dsl';
 /**
  * Generated class for the ListComponent component.
  *
@@ -16,7 +18,7 @@ export class ListComponent {
   users: any[] = [];
   user: any[] = [];
 
-  constructor(public userService : UserServiceProvider, public navCtrl: NavController){
+  constructor(public userService : UserServiceProvider, public navCtrl: NavController, public modalController: ModalController){
     this.getHttpUsers();
   }
 
@@ -36,7 +38,8 @@ export class ListComponent {
     let position = this.users.findIndex(n => n.name.first === user.name.first);
     return this.users.splice(position,1);
   }
-  verDetalles(user){
-      this.navCtrl.push(TerceraPage,{param1:user});
+  modalDetails(user){
+    let modal = this.modalController.create(UserPage,{prop1:user});
+    return modal.present();
   }
 }

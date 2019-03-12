@@ -9,7 +9,7 @@ import { MyApp } from './app.component';
 import { HomePageModule } from '../pages/home/home.module';
 import { PrimeraPage } from '../pages/primera/primera';
 import { SegundaPageModule } from '../pages/segunda/segunda.module';
-import { TerceraPageModule } from '../pages/tercera/tercera.module';
+import { UserPageModule } from '../pages/user/user.module';
 import { ComponentsModule } from '../components/components.module';
 import { UserServiceProvider } from '../providers/user-service/user-service';
 @NgModule({
@@ -21,7 +21,7 @@ import { UserServiceProvider } from '../providers/user-service/user-service';
     BrowserModule,
     HomePageModule,
     SegundaPageModule,
-    TerceraPageModule,
+    UserPageModule,
     ComponentsModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp)

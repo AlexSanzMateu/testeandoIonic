@@ -9,7 +9,7 @@
         <h2>{{ user.name.first | uppercase }}</h2>
         <p>{{ user.email }}</p>
         <button type = "submit" (click)="deleteUser(user)" style="background:#B22D10; color:white; border-radius:5px;">Eliminar</button>
-        <button type = "submit" (click)="verDetalles(user)" style="background:#0C94D8; color:white; border-radius:5px;">Ver Detalles</button>
+        <button type = "submit" (click)="modalDetails(user)" style="background:#0C94D8; color:white; border-radius:5px;">Ver Detalles</button>
       </ion-item>
     </ion-list>
 </ion-content>

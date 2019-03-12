@@ -14,9 +14,9 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'primera.html',
 })
 export class PrimeraPage {
-  private param1 : string;
-  private param2: string;
-  private allParams;
+  public param1 : string;
+  public param2: string;
+  public allParams;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.param1 = this.navParams.get("param1");
