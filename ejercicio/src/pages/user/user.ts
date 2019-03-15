@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 /**
  * Generated class for the UserPage page.
@@ -14,14 +14,17 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'user.html',
 })
 export class UserPage {
-  constructor(public navCtrl: NavController) {
+  constructor(
+    public navCtrl: NavController,
+    private viewCtrl: ViewController
+    ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad UserPage');
   }
   closeModal(){
-    this.navCtrl.pop();
+    this.viewCtrl.dismiss();
   }
  
 }

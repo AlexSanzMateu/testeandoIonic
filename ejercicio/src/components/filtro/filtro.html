@@ -1,0 +1,11 @@
+<!-- Generated template for the FiltroComponent component -->
+<ion-list>
+  <ion-item *ngFor="let entry of form">
+    <ion-checkbox tapable [(ngModel)]="entry.isChecked" (click)="checkValue()"></ion-checkbox>
+    <ion-label >{{entry.val}}</ion-label>
+  </ion-item>
+  <ion-item *ngFor="let nation of nationality">
+    <ion-checkbox tapable [(ngModel)]="nation.isChecked" (click)="checkValue()"></ion-checkbox>
+    <ion-label>{{ nation.value }}</ion-label>
+  </ion-item>
+</ion-list>

@@ -6,7 +6,6 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
  * See https://angular.io/api/core/Component for more info on Angular
  * Components.
  */
-@IonicPage()
 @Component({
   selector: 'user-detail',
   templateUrl: 'user-detail.html'

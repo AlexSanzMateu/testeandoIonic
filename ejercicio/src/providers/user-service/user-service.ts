@@ -14,7 +14,7 @@ export class UserServiceProvider {
   }
 
   getUsers(){
-    return this.http.get('https://randomuser.me/api/?results=5');
+    return this.http.get('https://randomuser.me/api/?results=20');
   }
   // getUser(name){
   //   return this.http.get('https://randomuser.me/api/?name='+name);
