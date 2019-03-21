@@ -16,7 +16,6 @@ export class ListComponent {
   usersFiltered = [];
   usersFilteredByNationality = [];
   sexFilters;
-  foo = false;
   nationFilters;
   searchValue;
   genres = [];
@@ -81,14 +80,14 @@ export class ListComponent {
     return (filter.val === 'male' || filter.val === 'female') && filter.isChecked;
   }
   isGenreUnChecked(filter) {
-    return (filter.val === 'male' || filter.val === 'female') && filter.isChecked == false;
+    return filter.isChecked == false;
   }
 
   isNationChecked(filter) {
     return (filter.id === 'DE' || filter.id === 'ES') && filter.isChecked;
   }
   isNationUnChecked(filter) {
-    return (filter.id === 'DE' || filter.id === 'ES') && filter.isChecked == false;
+    return filter.isChecked == false;
   }
 
   getHttpUsers(){
@@ -157,7 +156,7 @@ export class ListComponent {
   }
 
   checkAndSaveUserBySearchbar(user){
-    if(this.searchValue.toLowerCase() == user.name.first){
+    if(this.searchValue.toLowerCase() == (user.name.first)){
       this.usersFiltered.push(user)
     } 
   }
