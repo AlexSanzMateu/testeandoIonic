@@ -16,7 +16,9 @@ export class ListComponent {
   usersFiltered = [];
   usersFilteredByNationality = [];
   sexFilters;
+  foo = false;
   nationFilters;
+  searchValue;
   genres = [];
   nationalities = [];
   noExists = -1;
@@ -27,9 +29,9 @@ export class ListComponent {
     events.subscribe('filter:created', (form, nationality) => {
       this.sexFilters = form;
       this.nationFilters = nationality;
-      
       this.genres = [];
       this.nationalities = [];
+
 
       this.genresSelected();
       this.nationSelected();
@@ -38,6 +40,20 @@ export class ListComponent {
         this.usersFilteredByGenderOrNationality();
       }
       this.usersFilteredByGenderAndNationality()
+      
+    })
+
+    events.subscribe('searchbar:created', (searchValue) => {
+      this.searchValue = searchValue;
+      if(this.searchValue.length > 0){
+        this.usersFilteredBySearchbar()
+      }
+    })
+
+    events.subscribe('remove:created',(status) => {
+      if( status === true ) {
+        this.usersFilteredBySearchbarRemoved()
+      }
     })
   }
 
@@ -45,6 +61,7 @@ export class ListComponent {
     if (this.sexFilters) {
       this.sexFilters.forEach( filter => {
         if (this.isGenreChecked(filter)) this.genres.push(filter.val);
+        if (this.isGenreUnChecked(filter)) this.usersFiltered = this.users
       });
     }
   }
@@ -57,13 +74,18 @@ export class ListComponent {
     }
   }
 
-
   isGenreChecked(filter) {
     return (filter.val === 'male' || filter.val === 'female') && filter.isChecked;
   }
-  
+  isGenreUnChecked(filter) {
+    return (filter.val === 'male' || filter.val === 'female') && filter.isChecked == false;
+  }
+
   isNationChecked(filter) {
     return (filter.id === 'DE' || filter.id === 'ES') && filter.isChecked;
+  }
+  isNationUnChecked(filter) {
+    return (filter.id === 'DE' || filter.id === 'ES') && filter.isChecked == false;
   }
 
   getHttpUsers(){
@@ -97,13 +119,26 @@ export class ListComponent {
       (this.genres.length < 1 && this.nationalities.length < 1) ? this.usersFiltered.push(user) : this.checkAndSaveUsersBySexAndNation(user);
     })
   }
+  usersFilteredBySearchbar(){
+    this.usersFiltered = [];
+    this.users.forEach( user => {
+      this.searchValue.length <= 0 ? this.usersFiltered.push(user) : this.checkAndSaveUserBySearchbar(user)
+    })
+  }
 
+  usersFilteredBySearchbarRemoved(){
+    this.searchValue = '';
+    this.usersFiltered = this.users;
+  }
+  
   usersFilteredByGenderOrNationality(){
       this.genres.length > 0 ? this.usuariosFiltrados() : this.usuariosFiltradosPorNacionalidad(); 
    }
 
   usersFilteredByGenderAndNationality(){
-    (this.genres.length > 0 && this.nationalities.length > 0) ? this.usuariosFiltradosPorSexoNacionalidad() : console.log("")
+    if(this.genres.length > 0 && this.nationalities.length > 0){
+      this.usuariosFiltradosPorSexoNacionalidad()
+    } 
   }
 
   checkAndSaveUser(user) {
@@ -116,6 +151,12 @@ export class ListComponent {
 
   checkAndSaveUsersBySexAndNation(user){
     if (this.genres.indexOf(user.gender) > this.noExists && this.nationalities.indexOf(user.nat) > this.noExists ) this.usersFiltered.push(user)
+  }
+
+  checkAndSaveUserBySearchbar(user){
+    if(this.searchValue.toLowerCase() == user.name.first){
+      this.usersFiltered.push(user)
+    } 
   }
 
   deleteUser(user){
