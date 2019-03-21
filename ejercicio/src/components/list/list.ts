@@ -45,8 +45,11 @@ export class ListComponent {
 
     events.subscribe('searchbar:created', (searchValue) => {
       this.searchValue = searchValue;
-      if(this.searchValue.length > 0){
+      if(this.searchValue.length > 0) {
         this.usersFilteredBySearchbar()
+      }
+      if(this.searchValue.length <= 0) {
+        this.usersFilteredBySearchbarRemoved()
       }
     })
 
